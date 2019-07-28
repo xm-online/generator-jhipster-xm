@@ -4,7 +4,7 @@
   "description": "XM^online like miscroservice generation",
   "keywords": [
     "yeoman-generator",
-    "jhipster-module", 
+    "jhipster-module",
     "jhipster-5"
   ],
   "homepage": "https://github.com/ishkurko/generator-jhipster-xm",

@@ -1,2 +1,0 @@
-hello xm!
-It's dummy.txt
