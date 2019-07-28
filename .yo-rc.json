@@ -1,0 +1,10 @@
+{
+  "generator-jhipster-module": {
+    "promptValues": {
+      "githubName": "ishkurko",
+      "authorName": "Ihor Shkurko",
+      "authorEmail": "ishkurko@gmail.com",
+      "authorUrl": "https://www.xm-online.com/"
+    }
+  }
+}
