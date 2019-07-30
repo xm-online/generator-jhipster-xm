@@ -65,6 +65,26 @@ module.exports = class extends BaseGenerator {
             );
         };
 
+        // function to use for insert/update line in with key/value
+        this.insertOrUpdate = function (source, hook, key, value, options) {
+            if (options && options.pad) {
+                hook = ' '.repeat(options.pad) + hook;
+                console.log(hook);
+                key = ' '.repeat(options.pad) + key;
+                console.log(key);
+            }
+
+            const file = this.fs.read(source);
+            if (file.indexOf(key) === -1) {
+                const newlineStart = options && options.newlineStart ? '\n' : '';
+                const newlineEnd = options && options.newlineEnd ? '\n' : '';
+                const newvalue = newlineStart + key + value + '\n' + newlineEnd + hook;
+                this.fs.write(source, file.replace(hook, newvalue));
+            } else {
+                this.fs.write(source, file.replace(new RegExp(key + '.*\n', 'g'), key + value + '\n'));
+            }
+        }
+
         // read config from .yo-rc.json
         this.baseName = this.jhipsterAppConfig.baseName;
         this.packageName = this.jhipsterAppConfig.packageName;
@@ -106,6 +126,13 @@ module.exports = class extends BaseGenerator {
 
         if (this.buildTool === 'gradle') {
             this.template('banner.txt', 'src/main/resources/banner.txt');
+
+            this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
+                '# xm-custom-gradle-property', '');
+            this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
+                'xm_commons_version=', '2.0.15', {newlineEnd: true});
+            this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
+                'implementation "com.icthh.xm.commons:xm-commons-security:${xm_commons_version}"', '', {pad: 4, newlineStart: true});
         }
     }
 
