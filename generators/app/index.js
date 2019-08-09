@@ -128,11 +128,24 @@ module.exports = class extends BaseGenerator {
             this.template('banner.txt', 'src/main/resources/banner.txt');
 
             this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
-                '# xm-custom-gradle-property', '');
-            this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
-                'xm_commons_version=', '2.0.15', {newlineEnd: true});
+                '# xm-needle-gradle-property', '');
             this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
-                'implementation "com.icthh.xm.commons:xm-commons-security:${xm_commons_version}"', '', {pad: 4, newlineStart: true});
+                '//xm-needle-gradle-dependency', '', {pad: 4, newlineStart: true});
+
+            // Configure use of Lombok
+            this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
+                'lombok_version=', '1.18.8');
+            this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
+                'compileOnly "org.projectlombok:lombok:${lombok_version}"', '', {pad: 4});
+            this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
+                'annotationProcessor "org.projectlombok:lombok:${lombok_version}"', '', {pad: 4, newlineEnd: true});
+
+            // Configure use of XM commons
+            this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
+                'xm_commons_version=', '2.0.14', {newlineEnd: true});
+            this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
+                'implementation "com.icthh.xm.commons:xm-commons-security:${xm_commons_version}"', '', {pad: 4, newlineEnd: true});
+
         }
     }
 
