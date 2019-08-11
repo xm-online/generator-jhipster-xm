@@ -66,12 +66,10 @@ module.exports = class extends BaseGenerator {
         };
 
         // function to use for insert/update line in with key/value
-        this.insertOrUpdate = function (source, hook, key, value, options) {
+        this.insertOrUpdateLine = function (source, hook, key, value, options) {
             if (options && options.pad) {
                 hook = ' '.repeat(options.pad) + hook;
-                console.log(hook);
                 key = ' '.repeat(options.pad) + key;
-                console.log(key);
             }
 
             const file = this.fs.read(source);
@@ -82,6 +80,24 @@ module.exports = class extends BaseGenerator {
                 this.fs.write(source, file.replace(hook, newvalue));
             } else {
                 this.fs.write(source, file.replace(new RegExp(key + '.*\n', 'g'), key + value + '\n'));
+            }
+        }
+
+        // function to remove lines
+        this.replaceLine = function (source, oldLine, newLine) {
+            const file = this.fs.read(source);
+            if (file.indexOf(oldLine) !== -1) {
+                this.fs.write(source, file.replace(oldLine, newLine));
+            }
+        }
+
+        // function to remove lines
+        this.removeLines = function (source, start, deleteCount) {
+            const file = this.fs.read(source);
+            if (file.indexOf(start) !== -1) {
+                const str = file.split('\n'); 
+                str.splice(str.indexOf(start), deleteCount);
+                this.fs.write(source, str.join('\n'));
             }
         }
 
@@ -127,25 +143,34 @@ module.exports = class extends BaseGenerator {
         if (this.buildTool === 'gradle') {
             this.template('banner.txt', 'src/main/resources/banner.txt');
 
-            this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
+            this.insertOrUpdateLine('gradle.properties', '# jhipster-needle-gradle-property',
                 '# xm-needle-gradle-property', '');
-            this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
+            this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
                 '//xm-needle-gradle-dependency', '', {pad: 4, newlineStart: true});
 
             // Configure use of Lombok
-            this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
+            this.insertOrUpdateLine('gradle.properties', '# jhipster-needle-gradle-property',
                 'lombok_version=', '1.18.8');
-            this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
+            this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
                 'compileOnly "org.projectlombok:lombok:${lombok_version}"', '', {pad: 4});
-            this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
+            this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
                 'annotationProcessor "org.projectlombok:lombok:${lombok_version}"', '', {pad: 4, newlineEnd: true});
 
             // Configure use of XM commons
-            this.insertOrUpdate('gradle.properties', '# jhipster-needle-gradle-property',
+            this.insertOrUpdateLine('gradle.properties', '# jhipster-needle-gradle-property',
                 'xm_commons_version=', '2.0.14', {newlineEnd: true});
-            this.insertOrUpdate('build.gradle', '//jhipster-needle-gradle-dependency',
+            this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
                 'implementation "com.icthh.xm.commons:xm-commons-security:${xm_commons_version}"', '', {pad: 4, newlineEnd: true});
 
+            // Change verifier key source for a token converter from xm-uaa to xm-ms-config
+            this.fs.delete(`${javaDir}config/oauth2`);
+            this.fs.delete(`${javaDir}security/oauth2`);
+            this.template('SecurityConfiguration.java.ejs', `${javaDir}config/SecurityConfiguration.java`);
+            this.removeLines(`${javaDir}${this.getMainClassName()}.java`, '@ComponentScan(', 3);
+            this.replaceLine('src/main/resources/config/application-dev.yml',
+                'public-key-endpoint-uri: http://uaa/oauth/token_key', 'public-key-endpoint-uri: http://config/api/token_key');
+            this.replaceLine('src/main/resources/config/application-prod.yml',
+                'public-key-endpoint-uri: http://uaa/oauth/token_key', 'public-key-endpoint-uri: http://config/api/token_key');
         }
     }
 
