@@ -160,9 +160,9 @@ module.exports = class extends BaseGenerator {
             this.insertOrUpdateLine('gradle.properties', '# jhipster-needle-gradle-property',
                 'xm_commons_version=', '2.0.14', {newlineEnd: true});
             this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
-                'implementation "com.icthh.xm.commons:xm-commons-security:${xm_commons_version}"', '', {pad: 4, newlineEnd: true});
+                'implementation "com.icthh.xm.commons:xm-commons-security:${xm_commons_version}"', '', {pad: 4});
 
-            // Change verifier key source for a token converter from xm-uaa to xm-ms-config
+            // Configure use of verifier key source for a token converter from xm-uaa to xm-ms-config
             this.fs.delete(`${javaDir}config/oauth2`);
             this.fs.delete(`${javaDir}security/oauth2`);
             this.template('SecurityConfiguration.java.ejs', `${javaDir}config/SecurityConfiguration.java`);
@@ -171,6 +171,22 @@ module.exports = class extends BaseGenerator {
                 'public-key-endpoint-uri: http://uaa/oauth/token_key', 'public-key-endpoint-uri: http://config/api/token_key');
             this.replaceLine('src/main/resources/config/application-prod.yml',
                 'public-key-endpoint-uri: http://uaa/oauth/token_key', 'public-key-endpoint-uri: http://config/api/token_key');
+
+            // Configure use of XM logging
+            this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
+                'implementation "com.icthh.xm.commons:xm-commons-logging-web:${xm_commons_version}"', '', {pad: 4, newlineEnd: true});
+            this.replaceLine(`${javaDir}${this.getMainClassName()}.java`,
+                '@SpringBootApplication\n', `@SpringBootApplication(scanBasePackages = { "com.icthh.xm", "${this.packageName}" })\n`);
+            this.insertOrUpdateLine('src/main/resources/config/application.yml', '# application:',
+                '# xm-config:', '');
+            this.insertOrUpdateLine('src/main/resources/config/application.yml', '# application:',
+                'base-package: ', `${this.packageName}`);
+            this.insertOrUpdateLine('src/main/resources/config/application.yml', '# application:',
+                'xm-config:\n  enabled: false', '', {newlineEnd: true});
+            this.fs.delete(`${javaDir}aop/logging`);
+            this.fs.delete(`${javaDir}config/LoggingAspectConfiguration.java`);
+            this.fs.delete(`${javaDir}config/LoggingConfiguration.java`);
+            
         }
     }
 
