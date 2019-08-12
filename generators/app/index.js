@@ -39,10 +39,14 @@ module.exports = class extends BaseGenerator {
     prompting() {
         const prompts = [
             {
-                type: 'input',
-                name: 'message',
-                message: 'Please put something',
-                default: 'hello world!'
+                type: 'list',
+                name: 'tmfOpenApi',
+                message: `What kind of ${chalk.yellow('*TMForum Open API*')} would you like to use?`,
+                choices: response => {
+                    const opts = this.fs.readJSON(`${__dirname}/data/tmfOpenApi.json`);
+                    return opts;
+                },
+                default: 0
             }
         ];
 
@@ -118,7 +122,7 @@ module.exports = class extends BaseGenerator {
         const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
 
         // variable from questions
-        this.message = this.props.message;
+        this.tmfOpenApi = this.props.tmfOpenApi;
 
         // show all variables
         this.log('\n--- some config read from config ---');
@@ -146,21 +150,26 @@ module.exports = class extends BaseGenerator {
             this.insertOrUpdateLine('gradle.properties', '# jhipster-needle-gradle-property',
                 '# xm-needle-gradle-property', '');
             this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
-                '//xm-needle-gradle-dependency', '', {pad: 4, newlineStart: true});
+                '//xm-needle-gradle-dependency', '',
+                {pad: 4, newlineStart: true});
 
             // Configure use of Lombok
             this.insertOrUpdateLine('gradle.properties', '# jhipster-needle-gradle-property',
                 'lombok_version=', '1.18.8');
             this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
-                'compileOnly "org.projectlombok:lombok:${lombok_version}"', '', {pad: 4});
+                'compileOnly "org.projectlombok:lombok:${lombok_version}"', '',
+                {pad: 4});
             this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
-                'annotationProcessor "org.projectlombok:lombok:${lombok_version}"', '', {pad: 4, newlineEnd: true});
+                'annotationProcessor "org.projectlombok:lombok:${lombok_version}"', '',
+                {pad: 4, newlineEnd: true});
 
             // Configure use of XM commons
             this.insertOrUpdateLine('gradle.properties', '# jhipster-needle-gradle-property',
-                'xm_commons_version=', '2.0.14', {newlineEnd: true});
+                'xm_commons_version=', '2.0.14',
+                {newlineEnd: true});
             this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
-                'implementation "com.icthh.xm.commons:xm-commons-security:${xm_commons_version}"', '', {pad: 4});
+                'implementation "com.icthh.xm.commons:xm-commons-security:${xm_commons_version}"', '',
+                {pad: 4});
 
             // Configure use of verifier key source for a token converter from xm-uaa to xm-ms-config
             this.fs.delete(`${javaDir}config/oauth2`);
@@ -168,27 +177,47 @@ module.exports = class extends BaseGenerator {
             this.template('SecurityConfiguration.java.ejs', `${javaDir}config/SecurityConfiguration.java`);
             this.removeLines(`${javaDir}${this.getMainClassName()}.java`, '@ComponentScan(', 3);
             this.replaceLine('src/main/resources/config/application-dev.yml',
-                'public-key-endpoint-uri: http://uaa/oauth/token_key', 'public-key-endpoint-uri: http://config/api/token_key');
+                'public-key-endpoint-uri: http://uaa/oauth/token_key',
+                'public-key-endpoint-uri: http://config/api/token_key');
             this.replaceLine('src/main/resources/config/application-prod.yml',
-                'public-key-endpoint-uri: http://uaa/oauth/token_key', 'public-key-endpoint-uri: http://config/api/token_key');
+                'public-key-endpoint-uri: http://uaa/oauth/token_key',
+                'public-key-endpoint-uri: http://config/api/token_key');
 
             // Configure use of XM logging
             this.insertOrUpdateLine('build.gradle', '//jhipster-needle-gradle-dependency',
-                'implementation "com.icthh.xm.commons:xm-commons-logging-web:${xm_commons_version}"', '', {pad: 4, newlineEnd: true});
+                'implementation "com.icthh.xm.commons:xm-commons-logging-web:${xm_commons_version}"', '',
+                {pad: 4, newlineEnd: true});
             this.replaceLine(`${javaDir}${this.getMainClassName()}.java`,
-                '@SpringBootApplication\n', `@SpringBootApplication(scanBasePackages = { "com.icthh.xm", "${this.packageName}" })\n`);
+                '@SpringBootApplication\n',
+                `@SpringBootApplication(scanBasePackages = { "com.icthh.xm", "${this.packageName}" })\n`);
             this.insertOrUpdateLine('src/main/resources/config/application.yml', '# application:',
                 '# xm-config:', '');
             this.insertOrUpdateLine('src/main/resources/config/application.yml', '# application:',
                 'base-package: ', `${this.packageName}`);
             this.insertOrUpdateLine('src/main/resources/config/application.yml', '# application:',
-                'xm-config:\n  enabled: false', '', {newlineEnd: true});
+                'xm-config:\n  enabled: false', '',
+                {newlineEnd: true});
             this.fs.delete(`${javaDir}aop/logging`);
             this.fs.delete(`${javaDir}config/LoggingAspectConfiguration.java`);
             this.fs.delete(`${javaDir}config/LoggingConfiguration.java`);
 
             // Configure use of application external classpath
             this.template('entrypoint.sh.ejs', 'src/main/jib/entrypoint.sh');
+
+            // Add TMForum Open API specification
+            if (this.tmfOpenApi !== 'no') {
+                const _this = this;
+                const Converter = require('api-spec-converter');
+                Converter.convert({
+                    from: 'swagger_2',
+                    to: 'openapi_3',
+                    source: this.tmfOpenApi,
+                }).then((converted) => {
+                    converted.fillMissing();
+                    const options = {syntax: 'yaml', order: 'openapi'}
+                    _this.fs.write('src/main/resources/swagger/api.yml', converted.stringify(options));
+                });
+            }
         }
     }
 

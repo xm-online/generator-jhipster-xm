@@ -1,0 +1,222 @@
+[
+	{
+        "value": "no",
+        "name": "No one"
+    },
+    {
+        "value": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+        "name": "TMF666 Account Management admin"
+    },
+    {
+        "value": "https://raw.githubusercontent.com/tmforum-apis/TMF629_CustomerManagement/master/Customer_Management.admin.swagger.json",
+        "name": "TMF629 Customer Management admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF653_ServiceTestManagement/master/TMF653-ServiceTest-4.0.0.swagger.json",
+    	"name": "TMF653 Service Test Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF653_ServiceTestManagement/master/Service_Test_Management.admin.swagger.json",
+    	"name": "TMF653 Service Test Management admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-4.0.0.swagger.json",
+    	"name": "TMF645 Service Qualification"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/serviceQualification.regular.swagger.json",
+    	"name": "TMF645 Service Qualification regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrder/master/TMF641-ServiceOrdering-4.0.0.swagger.json",
+    	"name": "TMF641 Service Order"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrder/master/Service_Ordering_Management.regular.swagger.json",
+    	"name": "TMF641 Service Order regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF640_ActivationConfiguration/master/TMF640-ServiceActivationConfiguration-4.0.0.swagger.json",
+    	"name": "TMF640 Activation Configuration"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/TMF638-ServiceInventory-4.0.0.swagger.json",
+    	"name": "TMF638 Service Inventory"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/Service_Inventory_Management.regular.swagger.json",
+    	"name": "TMF638 Service Inventory regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633-ServiceCatalog-4.0.0.swagger.json",
+    	"name": "TMF633 Service Catalog"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633_Service_Catalog_Management.admin.swagger_R17.5.json",
+    	"name": "TMF633 Service Catalog admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633_Service_Catalog_Management.regular.swagger_R17.5.json",
+    	"name": "TMF633 Service Catalog regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF677_UsageConsumption/master/TMF677-UsageConsumption-4.0.0.swagger.json",
+    	"name": "TMF677 Usage Consumption"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF677_UsageConsumption/master/Usage_Consumption.regular.swagger.json",
+    	"name": "TMF677 Usage Consumption regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF663_ShoppingCart/master/Shopping_Cart_Management.admin.swagger.json",
+    	"name": "TMF663 Shopping Cart"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF635_UsageManagement/master/TMF635_UsageManagement_swagger_AP1144.json",
+    	"name": "TMF635 Usage Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/master/Trouble_Ticket.swagger.json",
+    	"name": "TMF621 Trouble Ticket"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF668_PartnershipType/master/Partnership_Type_Management.admin.swagger.json",
+    	"name": "TMF668 Partnership Type"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/Party_Role_Management.admin.swagger.json",
+    	"name": "TMF669 Party Role"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF691_FederatedIdentity/master/FederatedId_v11draft2_14thJune14_SwaggerValidatorPassed.swagger.json",
+    	"name": "TMF691 Federated Identity"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF654_PrepayBalanceManagement/master/PrepayBalanceManagement_R17_v204.swagger.json",
+    	"name": "TMF654 Prepay Balance Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF685_ResourcePool/master/Resource_Pool_Management.admin.swagger.json",
+    	"name": "TMF685 Resource Pool admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF685_ResourcePool/master/Resource_Pool_Management.regular.swagger.json",
+    	"name": "TMF685 Resource Pool regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF657_ServiceQualityManagement/master/Service_Quality_Management.admin.swagger.json",
+    	"name": "TMF657 Service Quality Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/Promotion_Management.admin.swagger.json",
+    	"name": "TMF671 Promotion admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF680_Recommendation/master/Recommendation_Management.admin.swagger.json",
+    	"name": "TMF680 Recommendation admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF681_Communication/master/Communication_Management.admin.swagger.json",
+    	"name": "TMF681 Communication admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF655_ChangeManagement/master/Change_Management.admin.swagger.json",
+    	"name": "TMF655 Change Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF652_ResourceOrderManagement/master/Resource_Ordering_Management.admin.swagger.json",
+    	"name": "TMF652 Resource Order Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/Resource_Inventory_Management.admin.swagger.json",
+    	"name": "TMF639 Resource Inventory admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/Resource_Inventory.regular.json",
+    	"name": "TMF639 Resource Inventory regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF670_PaymentMethods/master/paymentMethodsManagementTMF_v1.0.1_R17.5_VALIDATED.json",
+    	"name": "TMF670 Payment Methods"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF683_PartyInteraction/master/partyInteractionManagement_TMF_v1.0.0Review2.json",
+    	"name": "TMF683 Party Interaction"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/Agreement_Management.admin.swagger.json",
+    	"name": "TMF651 Agreement Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF684_ShipmentTracking/master/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json",
+    	"name": "TMF684 Shipment Tracking"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF658_LoyaltyManagement/master/Loyalty_Management.admin.swagger.json",
+    	"name": "TMF658 Loyalty Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/Quote_Management.regular.swagger.json",
+    	"name": "TMF648 Quote Management"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF646_AppointmentManagement/master/Appointment.regular.swagger.json",
+    	"name": "TMF646 Appointment Management regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634_Resource_Catalog_Management.admin.swagger-R17.0.0.json",
+    	"name": "TMF634 Resource Catalog admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634_Resource_Catalog_Management.regular.swagger-R17.0.0.json",
+    	"name": "TMF634 Resource Catalog regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/Product_Inventory_Management.swagger.json",
+    	"name": "TMF637 Product Inventory"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620_Product_Catalog_Management.admin.swagger.json",
+    	"name": "TMF620 Product Catalog admin"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620_Product_Catalog_Management.regular.swagger.json",
+    	"name": "TMF620 Product Catalog regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/GeographicAddress_Management.regular.swagger.json",
+    	"name": "TMF673 Geographic Address"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/GeographicLocation.regular.swagger.json",
+    	"name": "TMF675 Geographic Location"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/Party_Management.regular.swagger.json",
+    	"name": "TMF632 Party Management regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF678_CustomerBill/master/CustomerBill_Management.regular.swagger.json",
+    	"name": "TMF678 Customer Bill regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/GeographicSite_Management.regular.swagger.json",
+    	"name": "TMF674 Geographic Site regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesPermissions/master/UserRoles%26Permissions_v1draft3_swagger_Released.json",
+    	"name": "TMF672 User Roles Permissions"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF679_ProductOfferingQualification/master/Product_Offering_Qualification_Management.regular.swagger.json",
+    	"name": "TMF679 Product Offering Qualification regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/master/Product_Ordering_Management.regular.swagger.json",
+    	"name": "TMF622 Product Order regular"
+    },
+    {
+    	"value": "https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/master/paymentManagementTMF_v1.0.0_review9",
+    	"name": "TMF676 Payment Management"
+    }
+]

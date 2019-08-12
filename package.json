@@ -22,6 +22,7 @@
     "url": "git+https://github.com/ishkurko/generator-jhipster-xm.git"
   },
   "dependencies": {
+    "api-spec-converter": "^2.9.1",
     "chalk": "2.4.1",
     "generator-jhipster": ">=5.0.0",
     "mkdirp": "0.5.1",
