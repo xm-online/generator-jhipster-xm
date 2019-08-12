@@ -186,7 +186,9 @@ module.exports = class extends BaseGenerator {
             this.fs.delete(`${javaDir}aop/logging`);
             this.fs.delete(`${javaDir}config/LoggingAspectConfiguration.java`);
             this.fs.delete(`${javaDir}config/LoggingConfiguration.java`);
-            
+
+            // Configure use of application external classpath
+            this.template('entrypoint.sh.ejs', 'src/main/jib/entrypoint.sh');
         }
     }
 
